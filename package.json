@@ -1,5 +1,5 @@
 {
-  "name": "2708-node-lib-md",
+  "name": "estudando-modulos-node",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alura-cursos/2708-node-lib-md.git"
+    "url": "git+https://github.com/edumarioti/estudando-modulos-node.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alura-cursos/2708-node-lib-md/issues"
+    "url": "https://github.com/edumarioti/estudando-modulos-node/issues"
   },
-  "homepage": "https://github.com/alura-cursos/2708-node-lib-md#readme"
+  "homepage": "https://github.com/edumarioti/estudando-modulos-node#readme"
 }
