@@ -1,21 +1,35 @@
 import pegaArquivo from "./index.js"
 import trataErro from "./erros.js"
+import listaValdiada from "./http-validacao.js"
 import chalk from "chalk"
 import fs from 'fs'
 
 const caminho = process.argv
 
-function imprimeLista(resulto, arquivo) {
-    console.log(
-        chalk.yellow(`Lendo o arquivo:`), 
-        chalk.blueBright(arquivo),
-        chalk.white("\nLista de links no arquivo:"),
-        resulto,
-        "\n\n")
+async function imprimeLista(valida, resultado, arquivo) {
+    
+    if (valida) {
+        console.log(
+            chalk.yellow(`Lendo o arquivo:`), 
+            chalk.blueBright(arquivo),
+            chalk.white("\nLista de links validos no arquivo:"),
+            await listaValdiada(resultado),
+            "\n\n")
+            
+    } else {
+        console.log(
+            chalk.yellow(`Lendo o arquivo:`), 
+            chalk.blueBright(arquivo),
+            chalk.white("\nLista de links no arquivo:"),
+            resultado,
+            "\n\n")
+
+    }
 }
 
 async function processaTexto(argumentos) {
     const caminho = argumentos[2]
+    const valida = argumentos[3] === '--valida'
 
     try {
         fs.lstatSync(caminho)
@@ -28,7 +42,7 @@ async function processaTexto(argumentos) {
 
     if (isArquivo) {
         const resultado = await pegaArquivo(caminho)
-        imprimeLista(resultado, caminho)
+        imprimeLista(valida, resultado, caminho)
 
     } else if (isDiretorio) {
 
@@ -38,7 +52,7 @@ async function processaTexto(argumentos) {
             const caminhoDoArquivo = `${caminho}/${arquivo}`
             const resultado = await pegaArquivo(caminhoDoArquivo) 
 
-            imprimeLista(resultado, arquivo)
+            imprimeLista(valida, resultado, arquivo)
 
         })
     }

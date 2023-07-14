@@ -1,6 +1,8 @@
 import fs from 'fs'
 import trataErro from "./erros.js"
 
+
+
 function extraiLinks(texto) {
     const regex = /\[([^\[\]]*?)\]\((https?:\/\/[^\s?#.]*.[^\s]*)\)/gm
 
@@ -8,7 +10,8 @@ function extraiLinks(texto) {
 
     const resultado = capturas.map((captura) => (
         {
-            [captura[1]]: [captura[2]]
+            nome: captura[1],
+            url: captura[2]
         }))
     
     return resultado.length !== 0 ? resultado : "Nenhum link encontrado!"
