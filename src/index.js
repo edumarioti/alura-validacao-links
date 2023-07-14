@@ -11,7 +11,7 @@ function extraiLinks(texto) {
             [captura[1]]: [captura[2]]
         }))
     
-    return resultado
+    return resultado.length !== 0 ? resultado : "Nenhum link encontrado!"
 }
 
 
@@ -19,16 +19,16 @@ function trataErro(erro) {
     let mensagemErro = ''
 
     if (erro.code == 'ENOENT') {
-        mensagemErro = '-> Não foi encontrado o arquivo'
+        mensagemErro = erro.code + '-> Não foi encontrado o arquivo'
     } else if (erro.code == 'EISDIR') {
-        mensagemErro = '-> Foi informado um caminho não aponta para um arquivo'
-    } if (erro.code == 'EINVAL') {
-        mensagemErro = '-> O caminho informado não é válido'
+        mensagemErro = erro.code + '-> Foi informado um caminho não aponta para um arquivo'
+    } else if (erro.code == 'EINVAL') {
+        mensagemErro = erro.code + '-> O caminho informado não é válido'
     } else {
         mensagemErro = erro
     }
 
-    throw new Error(chalk.red(erro.code, mensagemErro))
+    throw new Error(chalk.red(mensagemErro))
 }
 
 //Função Assiscrona com promises e async/await
@@ -36,12 +36,12 @@ async function pegaArquivo(caminhoDoArquivo) {
     try {
         const encoding = 'utf-8'
         const texto = await fs.promises.readFile(caminhoDoArquivo, encoding)
-        console.log(extraiLinks(texto))
+        return extraiLinks(texto)
 
     } catch (erro) {
         trataErro(erro)
     }
 }
 
-pegaArquivo('./arquivos/texto.md')
+export default pegaArquivo 
 
