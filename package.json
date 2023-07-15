@@ -1,5 +1,5 @@
 {
-  "name": "estudando-modulos-node",
+  "name": "alura-validacao-links",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edumarioti/estudando-modulos-node.git"
+    "url": "git+https://github.com/edumarioti/alura-validacao-links.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/edumarioti/estudando-modulos-node/issues"
+    "url": "https://github.com/edumarioti/alura-validacao-links/issues"
   },
-  "homepage": "https://github.com/edumarioti/estudando-modulos-node#readme",
+  "homepage": "https://github.com/edumarioti/alura-validacao-links#readme",
   "dependencies": {
     "chalk": "5.0.1"
   }
