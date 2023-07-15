@@ -23,4 +23,3 @@ export default async function listaValdiada(listaDeLinks) {
     }))
 }
 
-//[gatinho salsicha](http://gatinhosalsicha.com.br/)
